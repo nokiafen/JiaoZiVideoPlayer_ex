@@ -749,7 +749,7 @@ public abstract class JZVideoPlayer extends FrameLayout implements View.OnClickL
         onStateAutoComplete();
 
         if (currentScreen == SCREEN_WINDOW_FULLSCREEN || currentScreen == SCREEN_WINDOW_TINY) {
-            backPress();
+//            backPress();
         }
         JZMediaManager.instance().releaseMediaPlayer();
         JZUtils.saveProgress(getContext(), JZUtils.getCurrentFromDataSource(dataSourceObjects, currentUrlMapIndex), 0);
@@ -764,12 +764,12 @@ public abstract class JZVideoPlayer extends FrameLayout implements View.OnClickL
         cancelProgressTimer();
         onStateNormal();
         textureViewContainer.removeView(JZMediaManager.textureView);
-//        JZMediaManager.instance().currentVideoWidth = 0;
-//        JZMediaManager.instance().currentVideoHeight = 0;
+        JZMediaManager.instance().currentVideoWidth = 0;
+        JZMediaManager.instance().currentVideoHeight = 0;
 
         AudioManager mAudioManager = (AudioManager) getContext().getSystemService(Context.AUDIO_SERVICE);
         mAudioManager.abandonAudioFocus(onAudioFocusChangeListener);
-//        JZUtils.scanForActivity(getContext()).getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        JZUtils.scanForActivity(getContext()).getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 //        clearFullscreenLayout();
         JZUtils.setRequestedOrientation(getContext(), NORMAL_ORIENTATION);
 
